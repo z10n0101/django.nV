@@ -84,11 +84,25 @@
               }
             }
           ],
-          "fixes": [
+           "fixes": [
             {
               "description": {
-                "text": "Fix this line."
-              }
+                "text": "Fix this issue by performing steps X, Y, and Z."
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "file:///app/taskManager/misc.py"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      }
+                    }
+                  ]
+                }
+              ]
             }
           ],
           "properties": {
