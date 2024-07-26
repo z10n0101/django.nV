@@ -84,6 +84,13 @@
               }
             }
           ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Fix this line."
+              }
+            }
+          ],
           "properties": {
             "issue_severity": "HIGH",
             "issue_confidence": "HIGH"
