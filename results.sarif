@@ -63,7 +63,7 @@
             {
               "physicalLocation": {
                 "artifactLocation": {
-                  "uri": "file:///taskManager/forms.py"
+                  "uri": "file:///app/taskManager/forms.py"
                 },
                 "region": {
                   "startLine": 17,
@@ -92,7 +92,7 @@
               "artifactChanges": [
                 {
                   "artifactLocation": {
-                    "uri": "file:///taskManager/forms.py"
+                    "uri": "file:///app/taskManager/forms.py"
                   },
                   "replacements": [
                     {
