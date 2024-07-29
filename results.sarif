@@ -63,12 +63,12 @@
             {
               "physicalLocation": {
                 "artifactLocation": {
-                  "uri": "file:///app/taskManager/misc.py"
+                  "uri": "file:///taskManager/forms.py"
                 },
                 "region": {
-                  "startLine": 33,
-                  "startColumn": 5,
-                  "endLine": 34,
+                  "startLine": 17,
+                  "startColumn": 1,
+                  "endLine": 19,
                   "endColumn": 17,
                   "snippet": {
                     "text": "    os.system(\n"
@@ -92,12 +92,12 @@
               "artifactChanges": [
                 {
                   "artifactLocation": {
-                    "uri": "file:///app/taskManager/misc.py"
+                    "uri": "file:///taskManager/forms.py"
                   },
                   "replacements": [
                     {
                       "deletedRegion": {
-                        "startLine": 1
+                        "startLine": 17
                       }
                     }
                   ]
