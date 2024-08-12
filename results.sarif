@@ -22,7 +22,16 @@
                 ]
               },
               "help": {
-                "markdown": "This is new line"
+                "markdown": "This is new line
+
+This is another line
+
+
+'''This is code
+          def python(self):
+              pass
+
+'''"
               },
             },
             {
