@@ -3,6 +3,9 @@
   "version": "2.1.0",
   "runs": [
     {
+ "properties": {
+        "defaultNewlineSequence": "\n"
+      },
       "tool": {
         "driver": {
           "name": "Bandit",
