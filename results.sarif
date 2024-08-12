@@ -20,7 +20,10 @@
                   "security",
                   "external/cwe/cwe-78"
                 ]
-              }
+              },
+              "help": {
+                "markdown": "This is new line"
+              },
             },
             {
               "id": "B608",
