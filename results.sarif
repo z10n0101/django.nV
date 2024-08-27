@@ -23,7 +23,7 @@
               }
             },
             {
-              "id": "B608",
+              "id": "B605",
               "name": "hardcoded_sql_expressions",
               "helpUri": "https://bandit.readthedocs.io/en/1.7.8/plugins/b608_hardcoded_sql_expressions.html",
               "properties": {
@@ -52,6 +52,7 @@
       "language": "en-US",
       "results": [
         {
+          "ruleId": "B605",
           "ruleIndex": 0,
           "kind": "fail",
           "level": "error",
@@ -110,6 +111,7 @@
           }
         },
         {
+          "ruleId": "B605",
           "ruleIndex": 1,
           "kind": "fail",
           "level": "warning",
