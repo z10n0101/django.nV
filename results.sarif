@@ -67,8 +67,7 @@ This is another line
       "language": "en-US",
       "results": [
         {
-          "ruleId": "B605",
-          "ruleIndex": 0,
+          "ruleId": "B605/ASDF",
           "kind": "fail",
           "level": "error",
           "message": {
@@ -126,8 +125,7 @@ This is another line
           }
         },
         {
-          "ruleId": "B608",
-          "ruleIndex": 1,
+          "ruleId": "B605/FDSA",
           "kind": "fail",
           "level": "warning",
           "message": {
