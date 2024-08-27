@@ -52,7 +52,7 @@
       "language": "en-US",
       "results": [
         {
-          "ruleId": "B605/ASDF",
+          "ruleId": "randomruleid",
           "ruleIndex": 0,
           "kind": "fail",
           "level": "error",
