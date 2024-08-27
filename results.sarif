@@ -3,9 +3,6 @@
   "version": "2.1.0",
   "runs": [
     {
- "properties": {
-        "defaultNewlineSequence": "\n"
-      },
       "tool": {
         "driver": {
           "name": "Bandit",
@@ -25,7 +22,7 @@
                 ]
               },
               "help": {
-                "markdown": "asdf"
+                "markdown": "This is new line"
               },
             },
             {
@@ -59,6 +56,7 @@
       "results": [
         {
           "ruleId": "B605",
+          "ruleIndex": 0,
           "kind": "fail",
           "level": "error",
           "message": {
@@ -116,7 +114,8 @@
           }
         },
         {
-          "ruleId": "B605",
+          "ruleId": "B608",
+          "ruleIndex": 1,
           "kind": "fail",
           "level": "warning",
           "message": {
