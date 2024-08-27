@@ -58,7 +58,7 @@
       "language": "en-US",
       "results": [
         {
-          "ruleId": "B605/ASDF",
+          "ruleId": "B605",
           "kind": "fail",
           "level": "error",
           "message": {
@@ -116,7 +116,7 @@
           }
         },
         {
-          "ruleId": "B605/FDSA",
+          "ruleId": "B605",
           "kind": "fail",
           "level": "warning",
           "message": {
