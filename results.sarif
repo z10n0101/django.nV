@@ -52,7 +52,6 @@
       "language": "en-US",
       "results": [
         {
-          "ruleId": "randomruleid",
           "ruleIndex": 0,
           "kind": "fail",
           "level": "error",
@@ -111,7 +110,6 @@
           }
         },
         {
-          "ruleId": "B605/FDSA",
           "ruleIndex": 1,
           "kind": "fail",
           "level": "warning",
