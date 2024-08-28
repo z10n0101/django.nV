@@ -96,8 +96,8 @@
             "issue_confidence": "MEDIUM",
             "issue_severity": "MEDIUM"
           },
-          "ruleId": "AAA",
-          "ruleIndex": 0
+          "ruleId": "AAA/first",
+          "ruleIndex": 0,
         },
         {
           "message": {
@@ -132,7 +132,7 @@
             "issue_confidence": "MEDIUM",
             "issue_severity": "MEDIUM"
           },
-          "ruleId": "AAA",
+          "ruleId": "AAA/second",
           "ruleIndex": 1
         }
       ]
