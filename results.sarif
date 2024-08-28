@@ -6,7 +6,6 @@
           "rules": [
             {
               "id": "AAA",
-              "index": 0,
               "shortDescription": {
                 "text": ""
               },
