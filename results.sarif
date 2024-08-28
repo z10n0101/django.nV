@@ -1,812 +1,146 @@
 {
-  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
-  "version": "2.1.0",
   "runs": [
     {
       "tool": {
         "driver": {
-          "name": "Bandit",
-          "organization": "PyCQA",
-          "version": "1.7.8",
-          "semanticVersion": "1.7.8",
           "rules": [
             {
-              "id": "B605",
-              "name": "start_process_with_a_shell",
-              "helpUri": "https://bandit.readthedocs.io/en/1.7.8/plugins/b605_start_process_with_a_shell.html",
-              "properties": {
-                "precision": "high",
-                "tags": [
-                  "security",
-                  "external/cwe/cwe-78"
-                ]
+              "id": "AAA",
+              "index": 0,
+              "name": "AAA1",
+              "shortDescription": {
+                "text": ""
+              },
+              "fullDescription": {
+                "text": ""
+              },
+              "help": {
+                "text": "",
+                "markdown": ""
               }
             },
             {
-              "id": "B605",
-              "name": "hardcoded_sql_expressions",
-              "helpUri": "https://bandit.readthedocs.io/en/1.7.8/plugins/b608_hardcoded_sql_expressions.html",
-              "properties": {
-                "precision": "medium",
-                "tags": [
-                  "security",
-                  "external/cwe/cwe-89"
-                ]
+              "id": "AAA",
+              "index": 1,
+              "name": "AAA2",
+              "shortDescription": {
+                "text": ""
+              },
+              "fullDescription": {
+                "text": ""
+              },
+              "help": {
+                "text": "",
+                "markdown": ""
               }
             }
           ],
-          "language": "en-US",
-          "contents": [
-            "localizedData",
-            "nonLocalizedData"
-          ],
-          "isComprehensive": false
+          "name": "GLOG",
+          "fullName": "Glog, Making software more secure",
+          "organization": "GLOG",
+          "version": "1.0.0",
+          "semanticVersion": "1.0.0"
         }
       },
       "invocations": [
         {
-          "endTimeUtc": "2024-07-25T09:26:28Z",
-          "executionSuccessful": true
+          "executionSuccessful": true,
+          "endTimeUtc": "2024-08-15T09:44:41Z"
         }
       ],
-      "language": "en-US",
+      "properties": {
+        "metrics": {
+          "_totals": {
+            "loc": 1556,
+            "nosec": 0,
+            "skipped_tests": 0,
+            "SEVERITY.UNDEFINED": 0,
+            "CONFIDENCE.UNDEFINED": 0,
+            "SEVERITY.LOW": 9,
+            "CONFIDENCE.LOW": 6,
+            "SEVERITY.MEDIUM": 36,
+            "CONFIDENCE.MEDIUM": 39,
+            "SEVERITY.HIGH": 4,
+            "CONFIDENCE.HIGH": 4
+          }
+        }
+      },
       "results": [
         {
-          "ruleId": "B605",
-          "ruleIndex": 1,
-          "kind": "fail",
-          "level": "error",
           "message": {
-            "text": "Starting a process with a shell, possible injection detected, security issue."
+            "text": "Probable insecure usage of temp file/directory."
           },
           "locations": [
             {
               "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "file:///app/taskManager/forms.py"
-                },
                 "region": {
-                  "startLine": 17,
-                  "startColumn": 1,
-                  "endLine": 19,
-                  "endColumn": 17,
                   "snippet": {
-                    "text": "    os.system(\n"
-                  }
+                    "text": "api_key_file = Path('/tmp/supersecret.txt')\n"
+                  },
+                  "endColumn": 43,
+                  "endLine": 6,
+                  "startColumn": 21,
+                  "startLine": 6
+                },
+                "artifactLocation": {
+                  "uri": "file:///app/bad/api_post.py"
                 },
                 "contextRegion": {
-                  "startLine": 32,
-                  "endLine": 40,
                   "snippet": {
-                    "text": "    # Let's avoid the file corruption race condition!\n    os.system(\n        \"mv \" +\n        uploaded_file.temporary_file_path() +\n        \" \" +\n        \"%s/%s\" %\n        (upload_dir_path,\n         title))\n\n"
-                  }
+                    "text": "\napi_key_file = Path('/tmp/supersecret.txt')\n\n"
+                  },
+                  "endLine": 7,
+                  "startLine": 5
                 }
               }
             }
           ],
-           "fixes": [
-            {
-              "description": {
-                "text": "Fix this issue by performing steps X, Y, and Z."
-              },
-              "artifactChanges": [
-                {
-                  "artifactLocation": {
-                    "uri": "file:///app/taskManager/forms.py"
-                  },
-                  "replacements": [
-                    {
-                      "deletedRegion": {
-                        "startLine": 17
-                      }
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
           "properties": {
-            "issue_severity": "HIGH",
-            "issue_confidence": "HIGH"
-          }
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "MEDIUM"
+          },
+          "ruleId": "AAA",
+          "ruleIndex": 0
         },
         {
-          "ruleId": "B605",
-          "ruleIndex": 0,
-          "kind": "fail",
-          "level": "warning",
           "message": {
             "text": "Possible SQL injection vector through string-based query construction."
           },
           "locations": [
             {
               "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "file:///app/taskManager/views.py"
-                },
                 "region": {
-                  "startLine": 184,
-                  "startColumn": 17,
-                  "endLine": 185,
-                  "endColumn": 98,
                   "snippet": {
-                    "text": "                \"insert into taskManager_file ('name','path','project_id') values ('%s','%s',%s)\" %\n"
-                  }
+                    "text": "        c.execute(\"INSERT INTO users (user, password, failures) VALUES ('%s', '%s', '%d')\" %(u, p, 0))\n"
+                  },
+                  "endColumn": 91,
+                  "endLine": 19,
+                  "startColumn": 19,
+                  "startLine": 19
+                },
+                "artifactLocation": {
+                  "uri": "file:///app/bad/db.py"
                 },
                 "contextRegion": {
-                  "startLine": 183,
-                  "endLine": 186,
                   "snippet": {
-                    "text": "            curs.execute(\n                \"insert into taskManager_file ('name','path','project_id') values ('%s','%s',%s)\" %\n                (name, upload_path, project_id))\n\n"
-                  }
+                    "text": "    for u,p in users:\n        c.execute(\"INSERT INTO users (user, password, failures) VALUES ('%s', '%s', '%d')\" %(u, p, 0))\n\n"
+                  },
+                  "endLine": 20,
+                  "startLine": 18
                 }
               }
             }
           ],
           "properties": {
-            "issue_severity": "MEDIUM",
-            "issue_confidence": "MEDIUM"
-          }
+            "issue_confidence": "MEDIUM",
+            "issue_severity": "MEDIUM"
+          },
+          "ruleId": "AAA",
+          "ruleIndex": 1
         }
-      ],
-      "newlineSequences": [
-        "\r\n",
-        "\n"
-      ],
-      "properties": {
-        "metrics": {
-          "_totals": {
-            "loc": 1712.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 3.0,
-            "CONFIDENCE.LOW": 0.0,
-            "SEVERITY.MEDIUM": 1.0,
-            "CONFIDENCE.MEDIUM": 4.0,
-            "SEVERITY.HIGH": 1.0,
-            "CONFIDENCE.HIGH": 1.0
-          },
-          "/app/manage.py": {
-            "loc": 6.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/__init__.py": {
-            "loc": 0.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/forms.py": {
-            "loc": 56.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0001_initial.py": {
-            "loc": 58.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0002_auto_20141010_2102.py": {
-            "loc": 17.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0003_auto_20141028_1913.py": {
-            "loc": 29.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0004_task_completed.py": {
-            "loc": 14.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0005_project_user.py": {
-            "loc": 16.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0006_auto_20141209_0644.py": {
-            "loc": 21.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0007_delete_assignproject.py": {
-            "loc": 11.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0008_project_users_assinged.py": {
-            "loc": 16.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0009_task_users_assinged.py": {
-            "loc": 16.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0010_auto_20141211_1914.py": {
-            "loc": 30.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0011_notes_user.py": {
-            "loc": 14.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0012_notes_image_url.py": {
-            "loc": 15.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0013_userprofile.py": {
-            "loc": 21.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0014_auto_20141224_2059.py": {
-            "loc": 15.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0015_auto_20141224_2123.py": {
-            "loc": 18.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0016_auto_20141227_0256.py": {
-            "loc": 18.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0017_auto_20141227_0427.py": {
-            "loc": 18.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0018_task_title.py": {
-            "loc": 14.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0019_notes_title.py": {
-            "loc": 14.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0020_auto_20150316_0621.py": {
-            "loc": 32.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0021_task_due_date.py": {
-            "loc": 16.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0022_auto_20150322_2350.py": {
-            "loc": 22.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0023_auto_20150324_1650.py": {
-            "loc": 22.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0024_auto_20150324_1737.py": {
-            "loc": 28.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0025_auto_20150324_2340.py": {
-            "loc": 27.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0026_auto_20150324_2342.py": {
-            "loc": 27.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0027_auto_20150324_2346.py": {
-            "loc": 27.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0028_auto_20150325_0010.py": {
-            "loc": 27.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0029_auto_20150325_0015.py": {
-            "loc": 27.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0030_auto_20150325_0023.py": {
-            "loc": 27.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0031_auto_20150325_0112.py": {
-            "loc": 22.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0032_auto_20150325_0155.py": {
-            "loc": 27.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0033_auto_20150325_0159.py": {
-            "loc": 27.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0034_auto_20150921_1829.py": {
-            "loc": 25.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0035_auto_20150921_2024.py": {
-            "loc": 25.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0036_auto_20150921_2024.py": {
-            "loc": 25.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0037_auto_20150921_2025.py": {
-            "loc": 25.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/0038_auto_20150921_2027.py": {
-            "loc": 26.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/migrations/__init__.py": {
-            "loc": 0.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/misc.py": {
-            "loc": 20.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 1.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 1.0
-          },
-          "/app/taskManager/models.py": {
-            "loc": 70.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/settings.py": {
-            "loc": 51.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 1.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 1.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/taskManager_urls.py": {
-            "loc": 64.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/urls.py": {
-            "loc": 12.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/views.py": {
-            "loc": 564.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 2.0,
-            "SEVERITY.MEDIUM": 1.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 3.0,
-            "CONFIDENCE.HIGH": 0.0
-          },
-          "/app/taskManager/wsgi.py": {
-            "loc": 10.0,
-            "nosec": 0.0,
-            "skipped_tests": 0.0,
-            "SEVERITY.UNDEFINED": 0.0,
-            "SEVERITY.LOW": 0.0,
-            "SEVERITY.MEDIUM": 0.0,
-            "SEVERITY.HIGH": 0.0,
-            "CONFIDENCE.UNDEFINED": 0.0,
-            "CONFIDENCE.LOW": 0.0,
-            "CONFIDENCE.MEDIUM": 0.0,
-            "CONFIDENCE.HIGH": 0.0
-          }
-        }
-      }
+      ]
     }
-  ]
+  ],
+  "version": "2.1.0",
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json"
 }
