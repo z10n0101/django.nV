@@ -7,28 +7,28 @@
             {
               "id": "AAA",
               "shortDescription": {
-                "text": ""
+                "text": "AAA1 shortDescription"
               },
               "fullDescription": {
-                "text": ""
+                "text": "AAA1 fullDescription"
               },
               "help": {
-                "text": "",
-                "markdown": ""
+                "text": "AAA1 help text",
+                "markdown": "AAA1 help markdown"
               }
             },
             {
               "id": "AAA",
               "name": "AAA2",
               "shortDescription": {
-                "text": ""
+                "text": "AAA2 shortDescription"
               },
               "fullDescription": {
-                "text": ""
+                "text": "AAA2 fullDescription"
               },
               "help": {
-                "text": "",
-                "markdown": ""
+                "text": "AAA2 help text",
+                "markdown": "AAA2 help markdown"
               }
             }
           ],
