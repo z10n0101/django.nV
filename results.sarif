@@ -97,7 +97,7 @@
             "issue_severity": "MEDIUM"
           },
           "ruleId": "AAA/first",
-          "ruleIndex": 0,
+          "ruleIndex": 0
         },
         {
           "message": {
